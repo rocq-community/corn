@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         image:
-          - 'coqorg/coq:dev'
+          - 'rocq/rocq-prover:dev'
           - 'coqorg/coq:8.19'
           - 'coqorg/coq:8.18'
       fail-fast: false
