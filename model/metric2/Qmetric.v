@@ -426,8 +426,8 @@ Proof.
  rewrite
    <- (Qmult_1_r x), <- (Qmult_1_r y),
    <- (Qmult_inv_r (proj1_sig z)), (Qmult_comm (proj1_sig z)),
-   Qmult_assoc, Qmult_assoc...
- apply Qball_Qmult_r... auto.
+   Qmult_assoc, Qmult_assoc.
+ apply Qball_Qmult_r. auto.
  intro abs. destruct z. simpl in abs.
  clear H. rewrite abs in q. exact (Qlt_irrefl _ q).
 Qed.

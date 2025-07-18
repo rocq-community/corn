@@ -60,13 +60,13 @@ Section uneven_CRplus.
    simpl.
    apply regFunEq_equiv, regFunEq_e. intro e.
    unfold ball, Q_as_MetricSpace, Qball, QAbsSmall.
-   rewrite approximate_CRplus...
+   rewrite approximate_CRplus.
    unfold uneven_CRplus_approx.
    setoid_replace (proj1_sig e + proj1_sig e)
      with (proj1_sig ((e * ll + (1#2) * e) + (e * rr + (1#2) * e)))%Qpos.
     apply Qball_plus; apply regFun_prf.
      simpl in llrr.
-   transitivity (proj1_sig e + proj1_sig e * proj1_sig (ll + rr)%Qpos)...
+   transitivity (proj1_sig e + proj1_sig e * proj1_sig (ll + rr)%Qpos).
    unfold QposEq in llrr. simpl in llrr. simpl. rewrite llrr.
    unfold canonical_names.equiv, stdlib_rationals.Q_eq. ring.
    unfold canonical_names.equiv, stdlib_rationals.Q_eq. simpl. ring.
