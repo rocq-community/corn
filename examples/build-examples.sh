@@ -1,0 +1,9 @@
+set -xe
+coqc bigD.v
+coqc Calculemus2011.v
+coqc Circle.v
+coqc IntegrationExamples.v
+coqc LMCS2011.v
+coqc PlotExamples.v
+coqc RealFast.v
+coqc RealFaster.v

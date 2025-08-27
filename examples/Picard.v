@@ -1,5 +1,5 @@
-Require Import CRtrans.
-Require Import Qmetric.
+(* TODO: fix this example *)
+From CoRN Require Import CRtrans Qmetric.
 
 (* For comparison with Pattison's paper:
 The ODE:
@@ -9,17 +9,18 @@ f(0)=0
 
 Section ODE.
 Open Scope uc_scope.
-Require Import ProductMetric CompleteProduct.
-Require Import Unicode.Utf8.
-Require Import CPoly_Newton.
-Require Import metric2.Classified.
-Require Import Circle.
+From CoRN Require Import ProductMetric CompleteProduct.
+From Stdlib Require Import Unicode.Utf8.
+From CoRN Require Import CPoly_Newton metric2.Classified.
+From examples Require Import Circle.
 Notation "X * Y":=(ProductMS X Y).
 Notation " f >> g ":= (Cbind_slow f ∘ g) (at level 50).
 Notation " x >>= f ":= (Cbind_slow f x) (at level 50).
 
 Section Picard_op.
-Require Import AbstractIntegration.
+From CoRN Require Import AbstractIntegration.
+From CoRN Require Import SimpleIntegration.
+
 (* 
 Require Import stdlib_omissions.Pair.
 For diagonal*)
@@ -28,8 +29,6 @@ Variable v: (Q*Q) -->CR.
 Variable f:Q-->CR.
 Notation "( f , g )":= (together f g).
 Definition vxfx:= (v >> Couple ∘ (Cunit, f) ∘ diag _).
-
-Require Import SimpleIntegration.
 
 (* Uniformly continuous function should be a type class 
 so that we can define functions using Program Instance *)

@@ -3,18 +3,18 @@
 (* I define the image of a path, a [Compact] subset of the plane.*)
 (* Finally, plot a hi-res Circle*)
 
-From CoRN Require Import Plot RasterQ Qmetric.
-Require Import CoRN.reals.fast.Interval.
-Require Import CoRN.metric2.MetricMorphisms.
-Require Import CoRN.reals.faster.ARArith.
-From CoRN Require Import ARplot.
-Require Import CoRN.reals.faster.ARcos
-        CoRN.reals.faster.ARsin
-        CoRN.reals.faster.ARexp
-        CoRN.reals.faster.ARbigD
-        CoRN.reals.faster.ARinterval.
-Require Import CoRN.reals.fast.CRtrans.
-Require Import CoRN.write_image.WritePPM.
+From CoRN Require Import Plot RasterQ Qmetric
+  reals.fast.Interval
+  metric2.MetricMorphisms
+  reals.faster.ARArith
+  ARplot
+  reals.faster.ARcos
+  reals.faster.ARsin
+  reals.faster.ARexp
+  reals.faster.ARbigD
+  reals.faster.ARinterval
+  reals.fast.CRtrans
+  write_image.WritePPM.
 
 Local Open Scope uc_scope.
 
@@ -76,7 +76,7 @@ Definition CirclePath': UCFunction Q R2:=
 Definition Circle : sparse_raster _ _
   := (let (_,r) := Plot.PlotPath 0 7 (-(1)) 1 (reflexivity _)
                              (-(1)) 1 (reflexivity _) 200 CirclePath
-      in r). 
+      in r).
 
 (* 16.3 seconds on Apple M1 *)
 Time Elpi WritePPM "Circle2.ppm" ( Circle ).

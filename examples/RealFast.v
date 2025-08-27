@@ -18,7 +18,7 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE PROOF OR THE USE OR OTHER DEALINGS IN THE PROOF.
 *)
-Require Import CRtrans.
+From CoRN Require Import CRtrans.
 
 Local Open Scope Q_scope.
 
@@ -78,7 +78,7 @@ Time Eval vm_compute in answer 10 (rational_sin (10^14))%CR.
 (* exp (exp (exp (1/2))) *)
 Time Eval vm_compute in answer 10 (exp (compress (exp (compress (rational_exp (1#2))))))%CR.
 
-Require Import CRsign.
+From CoRN Require Import CRsign.
 
 (* This example shows how to automatically solve inequalites for CR *)
 Example xkcd217A : (exp (CRpi) - CRpi < '(20#1))%CR.
@@ -86,8 +86,7 @@ unfold CRlt.
 Time CR_solve_pos (1#1000)%Qpos.
 Qed.
 
-Require Import Exponential.
-Require Import Pi.
+From CoRN Require Import Exponential Pi.
 
 (* This example shows how to automatically solve inequalites for IR *)
 
@@ -95,7 +94,7 @@ Example xkcd217B : (Exp Pi [-] Pi [<] (nring 20)).
 Time IR_solve_ineq (1#1000)%Qpos.
 Qed.
 
-Require Import MultivariatePolynomials.
+From CoRN Require Import MultivariatePolynomials.
 
 (* approximate 4*(1/e)*(1-(1/e)) while sharing the expression (1/e)
    using multivariable polynomial library (which only uses one variable

@@ -19,12 +19,10 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE PROOF OR THE USE OR OTHER DEALINGS IN THE PROOF.
 *)
 
-Require Import Integration.
-Require Import AbstractIntegration.
-Require SimpleIntegration.
-(*Require SimpsonIntegration.*)
-Require Import CRtrans.
-Require QnonNeg.
+From Stdlib Require Import NArith.
+From CoRN Require Import Integration AbstractIntegration SimpleIntegration
+(* SimpsonIntegration *)
+  CRtrans QnonNeg.
 Import QnonNeg.notations.
 
 (* The answer function returns an approximation of r within 10^-n.
@@ -33,9 +31,9 @@ answer is useful for because it displays a familar list of digits rather
 than an unfamiliar fraction that approximate would return *)
 
 Definition answer (n:positive) (r:CR) : Z :=
- let m := (iter_pos n _ (Pmult 10) 1%positive) in
- let (a,b) := (approximate r (1#m)%Qpos)*m in
- Zdiv a b.
+ let m := (Pos.iter (Pmult 10) 1%positive n) in
+ let (a,b) := (approximate r (1#m :> Qpos))*(Zpos m#1) in
+ Z.div a (Zpos b).
 
 (* This file illustrates how to use the computational integration *)
 (* Please review RealFast.v for examples on how to compute with CR *)
@@ -62,7 +60,7 @@ Time Eval vm_compute in answer 3 (ContinuousSup01 Cunit).
 (* An example of an elliptic integral that cannot be solved symbolically
 \int_0^1  (1-\fract{1}{4}\sin^2\phi)^{-\fract{1}{2}} d\phi *)
 
-Definition sinsquare:= (uc_compose (CRpower_positive_bounded 2 (1#1)) sin_uc).
+Definition sinsquare:= (uc_compose (CRpower_N_bounded 2 (1#1)) sin_uc).
 Definition quartersinsquare:=(uc_compose (scale (1#4)) sinsquare).
 Definition body:=(uc_compose (translate 1) quartersinsquare).
 Definition rootbody:=(uc_compose CRsqrt body).

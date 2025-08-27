@@ -9,6 +9,7 @@ Makefile.coq.conf
 *.vos
 *.d
 *.glob
+*.ppm
 *.pyc
 tree.dot
 tree.ps
