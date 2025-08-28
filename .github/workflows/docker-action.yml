@@ -29,6 +29,21 @@ jobs:
         with:
           opam_file: 'coq-corn.opam'
           custom_image: ${{ matrix.image }}
+          after_script: |
+            startGroup "Workaround permission issue"
+              sudo chown -R 1000:1000 .
+            endGroup
+            startGroup "Test examples"
+              if $(coqc -print-version|grep -q "^9\.")
+              then
+                cd examples
+                sh build-examples.sh
+              fi
+            endGroup
+      - name: Revert permissions
+        # to avoid a warning at cleanup time
+        if: ${{ always() }}
+        run: sudo chown -R 1001:116 .
 
 
 # See also:

@@ -19,8 +19,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE PROOF OR THE USE OR OTHER DEALINGS IN THE PROOF.
 *)
 
-Require Import Plot.
-Require Import CRtrans.
+From CoRN Require Import Plot CRtrans.
 
 (* `∗' is used for trival proofs that a some concrete number is less than another *)
 Notation star := (@refl_equal _ Lt).
@@ -34,17 +33,17 @@ Local Open Scope raster.
 (* PlotQ requires that we plot uniformly continuous functions.
    Therefore we cannot plot (sin : CR -> CR), me must instead
    plot the UniformlyContinuousFunction (sin_uc : Q --> CR). *)
-(* Here we plot sin on [-3,3] with range [-1,1] on a 36x12 raster *)
-Time Eval vm_compute in PlotQ (- (3)) 3 star (- (1)) 1 star sin_uc 36 12.
+(* Here we plot sin on [-3,3] (= [-3,-3+6]) with range [-1,1] (= [-1,-1+2]) on a 36x12 raster *)
+Time Eval vm_compute in PlotQ (- (3)) (- (1)) (exist _ 6 star) (exist _ 2 star) sin_uc 36 12.
 
 (* Here we explore the proof that plots are correct *)
 Goal True.
 (* Plot_correct is a proof that the plot is correct.*)
 (* below we plot exp on [-3, 0] with range [0,1] *)
 (* (exp_bound_uc 0) is exp on ]-inf,0] which is one domain where it is uniformly continuous *)
-assert (X:=@Plot_correct (-(3)) 0 star 0 1 star
+assert (X:=@Plot_correct (-(3)) 0 (exist _ 3 star) (exist _ 1 star)
  (exp_bound_uc 0)
- 45 15 refl_equal refl_equal).
+ 45 15).
 (* No plot is seen.  It is hidden in the uncomputed
   PlotQ (- (3)) 0 ∗ 0 1 ∗ (exp_bound_uc 0) 45 15 *)
 (* We use patern matchin to extract the parts of the statement we

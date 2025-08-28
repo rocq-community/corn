@@ -1,11 +1,10 @@
-Require Import CRtrans Compress.
-Require Import ARtrans ARbigD.
+From CoRN Require Import CRtrans Compress ARtrans ARbigD.
 
 Definition eval (n:positive) (r : CR) :=
- let m := iter_pos n _ (Pmult 10) 1%positive in let _ := approximate r (1#m)%Qpos in tt.
+ let m := Pos.iter (Pmult 10) 1%positive n in let _ := approximate r (1#m :> Qpos) in tt.
 
 Definition deval (n:positive) (r : ARbigD) :=
- let m := iter_pos n _ (Pmult 10) 1%positive in let _ := approximate r (1#m)%Qpos in tt.
+ let m := Pos.iter (Pmult 10) 1%positive n in let _ := approximate r (1#m :> Qpos) in tt.
 
 Definition P01 : CR := sin (compress (sin (compress (rational_sin 1)))).
 Definition dP01 : ARbigD := ARsin (ARsin (AQsin 1)).
@@ -28,7 +27,7 @@ Definition dP07 : ARbigD := AQexp ('1000%Z).
 Definition P08 : CR := cos (cast Q CR (cast Z Q (10^50)%Z)).
 Definition dP08 : ARbigD := AQcos ('(10^50)%Z).
 
-Require Import String.
+From Stdlib Require Import String.
 
 Eval compute in "old"%string.
 Time Eval vm_compute in (eval 25 P01).
