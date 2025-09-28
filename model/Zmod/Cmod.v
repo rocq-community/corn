@@ -63,9 +63,9 @@ Proof.
  cut False.
   intuition.
  cut (Zneg p < 0)%Z.
-  intuition.
+  intuition; auto with *.
  unfold Z.lt.
- intuition.
+ intuition; auto with *.
 Qed.
 
 
@@ -98,7 +98,7 @@ Proof.
  simpl.
  intro x.
  set (H1:= (inject_nat_convert x)).
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma  nat_Z_div:forall (a b c r:nat)(b' r':Z),
@@ -107,7 +107,7 @@ Proof.
  intros a b c0 r b' r' H H1 H2 H3.
  cut (c0>0)%Z.
   intro H5.
-  2:intuition.
+  2:intuition; auto with *.
  set (H4:=(Z_div_mod_eq_full (Z_of_nat a) (Z_of_nat c0))).
  cut ((Z_of_nat a mod (Z_of_nat c0))%Z = r').
   intro H6.
@@ -124,12 +124,12 @@ Proof.
   rewrite H9.
   rewrite H8.
   apply Zmod_small.
-   intuition.
+   intuition; auto with *.
   intuition.
  rewrite H2.
  replace (Z_of_nat c0 * b' + r')%Z with ( b'*Z_of_nat c0 + r')%Z.
-  2:intuition.
+  2:intuition; auto with *.
  set (H8:= (Zmod_cancel_multiple c0 r' b' H5)).
  rewrite H8.
- apply Zmod_small; intuition.
+ apply Zmod_small; intuition; auto with *.
 Qed.

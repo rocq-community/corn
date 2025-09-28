@@ -132,7 +132,7 @@ Proof.
  intros.
  right.
  rewrite b.
- intuition.
+ intuition; auto with *.
 Qed.
 
 (**
@@ -660,8 +660,8 @@ Proof.
    apply leEq_transitive with (xj[-d]from_SubPsMetricSpace X P x0).
     apply eq_imp_leEq.
     apply csbf_wd_unfolded.
-     intuition.
-    intuition.
+     intuition; auto with *.
+    intuition; auto with *.
    exact q.
   apply plus_resp_leEq.
   apply leEq_transitive with (from_SubPsMetricSpace X P x[-d]xj).

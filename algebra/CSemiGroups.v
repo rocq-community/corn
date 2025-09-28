@@ -378,7 +378,7 @@ Proof.
   intros x y.
   apply eq_fm_reflexive.
  simpl.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Definition Astar_as_CSemiGroup:=

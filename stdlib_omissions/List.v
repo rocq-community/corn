@@ -70,9 +70,9 @@ Proof with auto.
  apply NoDup_cons.
   intros [?|?]...
   subst y.
-  intuition.
+  intuition; auto with *.
  apply NoDup_cons...
- intuition.
+ intuition; auto with *.
 Qed.
 
 #[global]

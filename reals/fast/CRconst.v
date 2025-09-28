@@ -17,7 +17,7 @@ Section const_fun_uc.
 
  Lemma const_uc_prf : is_UniformlyContinuousFunction const_raw const_mu.
  Proof.
-  unfold is_UniformlyContinuousFunction; now intuition.
+  unfold is_UniformlyContinuousFunction; now intuition; auto with *.
  Qed.
 
  (** [const_uc c] defines the uniformly continuous function [λ _, c] *)

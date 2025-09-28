@@ -239,8 +239,8 @@ Proof.
  unfold Z.abs.
  destruct p.
    destruct Hap; reflexivity.
-  simpl; unfold Qle; simpl; intuition.
- simpl; unfold Qle; simpl; intuition.
+  simpl; unfold Qle; simpl; intuition; auto with *.
+ simpl; unfold Qle; simpl; intuition; auto with *.
 Qed.
 
 Lemma Liouville_lemma5 : forall (p : Z_as_CRing) (q : positive), (zx2qx P) ! (p#q)%Q [#] [0] ->

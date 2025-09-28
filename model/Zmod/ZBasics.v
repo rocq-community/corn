@@ -257,7 +257,7 @@ Section zineq.
 Lemma Zgt_Zge: forall (n m:Z), (n>m)%Z -> (n>=m)%Z.
 Proof.
  intros n m.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma Zle_antisymm : forall a b : Z, (a >= b)%Z -> (b >= a)%Z -> a = b.
@@ -519,7 +519,7 @@ Qed.
 Lemma Zcompat_lt_plus: forall (n m p:Z),(n < m)%Z-> (p+n < p+m)%Z.
 Proof.
  intros n m p.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Transparent Zplus.
@@ -531,7 +531,7 @@ Proof.
  simpl.
  set (H:=(succ_nat m)).
  rewrite H.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Opaque Zplus.

@@ -253,12 +253,12 @@ Proof.
   astepl ((Inv f iso_imp_bij) (f a' [+] f b')).
   astepl ((Inv f iso_imp_bij) ( f ( a'[+] b'))).
    set (H3:= (inv2 M1 M2 f iso_imp_bij (a'[+]b'))).
-   astepl (a'[+]b'). astepr (a'[+] b'). intuition.
+   astepl (a'[+]b'). astepr (a'[+] b'). intuition; auto with *.
    set (H4:=(inv2 M1 M2 f iso_imp_bij a')).
    apply csbf_wd.
-    astepr (Inv f iso_imp_bij (f a')); intuition.
-   astepr (Inv f iso_imp_bij (f b')).  set (H5:= (inv2 M1 M2 f iso_imp_bij b')); intuition.
-   intuition.
+    astepr (Inv f iso_imp_bij (f a')); intuition; auto with *.
+   astepr (Inv f iso_imp_bij (f b')).  set (H5:= (inv2 M1 M2 f iso_imp_bij b')); intuition; auto with *.
+   intuition; auto with *.
  apply Inv_bij.
 Qed.
 
@@ -335,11 +335,11 @@ Proof.
  induction s.
   simpl.
   replace (k+0) with k.
-   intuition.
+   intuition; auto with *.
   intuition.
  simpl.
  replace (k+((l-k)+s*(l-k)))  with (l + s*(l-k)).
-  2:intuition.
+  2:intuition; auto with *.
  set (H1:= (power_plus M u l (s*(l-k)))).
  astepr  (csbf_fun (csg_crr (cm_crr M)) (csg_crr (cm_crr M))
    (csg_crr (cm_crr M)) (csg_op (c:=cm_crr M)) (power_CMonoid u l) (power_CMonoid u (s * (l - k)))).
@@ -374,7 +374,7 @@ Proof.
  intros H4.
  set (H6:=(Z_div_mod_eq_full (n-k)(l-k))).
  cut (((n - k) mod (l - k))= (n-k)%Z -((l - k) * ((n - k) / (l - k))))%Z.
-  2:intuition.
+  2:intuition; auto with *.
  set (H7:=(mod_nat_correct (n-k) (l-k) H2)).
  intro H8.
  cut {s:nat | (mod_nat (n-k)(l-k) H2)=(n-k)-s*(l-k) and s*(l-k)<=(n-k)}.
@@ -391,7 +391,7 @@ Proof.
    rewrite -> (power_plus M  u  (k+(s*(l-k))) ((n-k)-s*(l-k))).
    rewrite -> (power_plus M u k (n-k-s*(l-k))).
    setoid_replace (power_CMonoid u (k + s * (l - k))) with (power_CMonoid u k). now reflexivity.
-  unfold canonical_names.equiv. now intuition. 
+  unfold canonical_names.equiv. now intuition; auto with *. 
   cut (n=k+(n-k)).
    intro H10.
    cut (n=((k+(n-k))+(s*(l-k)-s*(l-k)))).
@@ -408,18 +408,18 @@ Proof.
     intro H11.
     rewrite H11.
     now intuition.
-   now intuition.
+   now intuition; auto with *.
   cut (n=n+(k-k)).
    intro H10.
    cut (n+(k-k)=k+(n-k)).
     intro H11.
     now rewrite<- H10 in H11.
    apply minus3.
-   split; now intuition.
+   split; now intuition; auto with *.
   cut ((k-k)=0).
    intro H10.
    now rewrite H10.
-  now intuition.
+  now intuition; auto with *.
  simpl.
  cut (l-k>0).
   intro H9.
@@ -435,17 +435,17 @@ Proof.
    elim H10'.
    clear H10'.
    intros H10' H10''.
-   3:intuition.
+   3:intuition; auto with *.
   cut ((n-k)= q*(l-k)+ (mod_nat (n-k)(l-k) H2)).
    intro H11.
-   intuition.
+   intuition; auto with *.
   cut (r= (mod_nat (n-k)(l-k)H2)).
    intro H11.
    now rewrite<- H11.
   simpl.
   cut ((Z_of_nat r)=(mod_nat (n - k) (l - k) H2)).
    intro H11.
-   intuition.
+   intuition; auto with *.
   rewrite<- H7.
   apply nat_Z_div with (n-k) q (l-k) ((Z_of_nat n - Z_of_nat k) / (Z_of_nat l - Z_of_nat k))%Z.
      exact H10'.
@@ -459,17 +459,17 @@ Proof.
      set (H16:=(inj_minus1 n k H14)).
      rewrite H16.
      exact H6.
-    intuition.
-   intuition.
+    intuition; auto with *.
+   intuition; auto with *.
   set (H17:=(Z_mod_lt (Z_of_nat (n-k)) (Z_of_nat (l-k)))).
-  intuition.
+  intuition; auto with *.
  elim H10.
  clear H10.
  intros r H10.
  elim H10.
  clear H10.
  intros H10 H10'.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma cyc_imp_comm: forall (M:CMonoid)(H:(cyclic M)), (commutes (@csg_op M)).
@@ -491,7 +491,7 @@ Proof.
  replace (nx+ny) with (ny+nx).
   rewrite -> (power_plus M c0 ny nx).
   now apply eq_reflexive.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma weakly_inj1:
@@ -544,12 +544,12 @@ Proof.
      split.
       intuition.
      right.
-     intuition.
-    intuition.
+     intuition; auto with *.
+    intuition; auto with *.
    clear orex.
    intro orex.
-   intuition.
-  intuition.
+   intuition; auto with *.
+  intuition auto with *.
  clear H5.
  intro H5.
  cut False.
@@ -587,13 +587,13 @@ Proof.
      split.
       intuition.
      right.
-     intuition.
-    intuition.
+     intuition auto with *.
+    intuition auto with *.
    clear orex.
    intro orex.
-   intuition.
-  intuition.
- intuition.
+   intuition; auto with *.
+  intuition auto with *.
+ intuition; auto with *.
 
 Qed.
 
@@ -716,14 +716,14 @@ Proof.
  simpl.
  split.
   split.
-   intuition.
+   intuition; auto with *.
   intros a b.
   case a.
   intros a0 a1.
   case b.
   intros b0 b1.
   simpl.
-  intuition.
+  intuition; auto with *.
  unfold bijective.
  split.
   unfold injective.
@@ -741,7 +741,7 @@ Proof.
  intros a0 a1.
  exists (pairT a1 a0).
  simpl.
- intuition.
+ intuition; auto with *.
 Qed.
 
 End p71E2b2.
@@ -768,7 +768,7 @@ Proof.
  unfold eq_fun in |- *.
  unfold id_un_op in |- *.
  simpl in |- *.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma id_is_lft_unit :
@@ -781,7 +781,7 @@ Proof.
  unfold eq_fun in |- *.
  unfold id_un_op in |- *.
  simpl in |- *.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Definition FS_is_CMonoid (A : CSetoid) :=
@@ -813,7 +813,7 @@ Proof.
  induction a.
   apply eq_fm_reflexive.
  simpl.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Section Th12.
@@ -835,7 +835,7 @@ Proof.
   simpl.
   intuition.
  simpl.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma nil_is_lft_unit: (is_lft_unit (app_as_csb_fun A) (empty_word A)).
@@ -847,7 +847,7 @@ Proof.
   simpl.
   intuition.
  simpl.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Definition free_monoid_is_CMonoid:
@@ -943,7 +943,7 @@ Proof.
  unfold Dbrack.
  exists (@nil M).
  simpl.
- intuition.
+ intuition; auto with *.
 Qed.
 
 
@@ -958,7 +958,7 @@ Proof.
  simpl.
  astepr (a [+] ( (cm_Sum k)[+](cm_Sum l))).
  apply csbf_wd_unfolded.
-  intuition.
+  intuition; auto with *.
  exact IHk.
 Qed.
 
@@ -986,7 +986,7 @@ Qed.
 Lemma cm_Sum_units (a: list M): (forall x, In x a -> x [=] [0]) -> cm_Sum a [=] [0].
 Proof with intuition.
  clear D.
- induction a. intuition.
+ induction a. intuition; auto with *.
  intros E.
  simpl.
  rewrite IHa...

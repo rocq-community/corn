@@ -153,7 +153,7 @@ Proof with intuition.
    with (e * (1#n)).
   apply Qball_Qabs...
   unfold canonical_names.equiv, stdlib_rationals.Q_eq.
- rewrite <- Zpos_eq_Z_of_nat_o_nat_of_P...
+ rewrite <- Zpos_eq_Z_of_nat_o_nat_of_P; intuition; auto with *.
 Qed.
 
 Lemma Qmult_Σ (f: nat -> Q) n (k: nat):

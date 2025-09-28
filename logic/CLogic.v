@@ -1610,7 +1610,7 @@ Lemma CForall_indexed {A} (P: A -> Type) (l: list A): CForall P l ->
 Proof.
  intros X i.
  revert l X.
- induction i; destruct l; simpl in *; intuition; exfalso; inversion H.
+ induction i; destruct l; simpl in *; intuition; auto with *; exfalso; inversion H.
 Qed.
 
 Lemma CForall_map {A B} (P: B -> Type) (f: A -> B) (l: list A):
@@ -1639,24 +1639,24 @@ Qed.
 
 Lemma CNoDup_indexed {T} (R: T -> T -> Type) (Rsym: Csymmetric _ R) (l: list T) (d: T): CNoDup R l ->
   forall i j, (i < length l)%nat -> (j < length l)%nat -> i <> j -> R (nth i l d) (nth j l d).
-Proof with intuition.
- induction l; simpl...
-  exfalso...
+Proof.
+ induction l; simpl; intuition.
+  exfalso; auto with *.
  destruct i.
-  destruct j...
-  apply (CForall_indexed (R a) l)...
- destruct j...
+  destruct j; intuition.
+  apply (CForall_indexed (R a) l); auto with *.
+ destruct j; auto with *.
  apply Rsym.
- apply (CForall_indexed (R a) l)...
+ apply (CForall_indexed (R a) l); auto with *.
 Qed.
 
 Lemma CNoDup_map {A B: Type} (R: B -> B -> Type) (f: A -> B):
   forall l, CNoDup (fun x y => R (f x) (f y)) l  IFF  CNoDup R (map f l).
-Proof with auto; intuition.
- induction l; simpl...
+Proof.
+ induction l; simpl; auto; intuition; auto with *.
  split; intro; split.
     apply IHl, X.
-   apply CForall_map...
+   apply CForall_map; auto; intuition.
   apply IHl, X.
- apply CForall_map...
+ apply CForall_map; auto; intuition.
 Qed.

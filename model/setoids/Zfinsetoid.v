@@ -122,7 +122,7 @@ Proof.
  red in |- *.
  unfold not in |- *.
  unfold Not in |- *.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Definition Zless (n : Z) :=

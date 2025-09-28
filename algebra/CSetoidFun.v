@@ -231,7 +231,7 @@ Proof.
  simpl in |- *.
  unfold eq_fun in |- *.
  simpl in |- *.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Section unary_and_binary_function_composition.
@@ -579,7 +579,7 @@ Proof.
   simpl.
   intuition.
  simpl.
- intuition.
+ intuition; auto with *.
 Qed.
 
 End p66E2b4.

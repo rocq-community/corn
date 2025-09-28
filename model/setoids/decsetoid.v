@@ -40,8 +40,8 @@ Section contents.
   Instance ap_apart: Apartness ap.
   Proof with auto.
    apply Build_Apartness.
-      do 2 intro. intuition.
-     do 4 intro. intuition.
+      do 2 intro. intuition; auto with *.
+     do 4 intro. intuition; auto with *.
     intros x y H z.
     destruct (eq_dec x z)...
     destruct (eq_dec z y)...

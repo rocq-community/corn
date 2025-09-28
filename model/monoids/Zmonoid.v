@@ -68,7 +68,7 @@ Proof.
  simpl.
  split.
   reflexivity.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Definition Z_is_CMonoid := Build_is_CMonoid

@@ -578,7 +578,7 @@ Lemma nz : forall n m : nat, n <= Nat.max n m.
 Proof.
  intro n.
  intro m.
- intuition.
+ intuition; auto with *.
 Qed.
 (* end hide *)
 

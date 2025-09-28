@@ -26,8 +26,8 @@ Instance setoid: Setoid T.
 Proof with intuition.
  constructor.
    intros []...
-  intros [] [] ?...
- intros [x|] [y|] [z|] ??...
+  intros [] [] ?; intuition; auto with *.
+ intros [x|] [y|] [z|] ??; intuition; auto with *.
  change (x = z).
  transitivity y...
 Qed.
@@ -42,7 +42,7 @@ Definition le (x y: T): Prop :=
 #[global]
 Instance: Proper (=) le.
 Proof.
- intros [|] [|] E [|] [|] F; intuition; simpl; try reflexivity.
+ intros [|] [|] E [|] [|] F; intuition; auto with *; simpl; try reflexivity.
  unfold equiv in * |-. simpl in *.
  now rewrite E, F.
 Qed.

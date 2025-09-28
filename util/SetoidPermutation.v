@@ -20,9 +20,9 @@ Section def.
   Proof with eauto; intuition.
    constructor...
     intro l.
-    induction l...
+    induction l; eauto; intuition; auto with *.
    intros x y H.
-   induction H...
+   induction H; eauto; intuition; auto with *.
   Qed.
 
   Global Instance: Proper (list_eq e ==> list_eq e ==> iff) SetoidPermutation.
@@ -69,7 +69,7 @@ Lemma SetoidPermutation_meaning {A} (R: relation A) `{!Equivalence R} (x y: list
 Proof with auto.
  split.
   intro H. induction H.
-     exists nil. intuition.
+     exists nil. intuition; auto with *.
     destruct IHSetoidPermutation as [?[??]].
     exists (y :: x0).
     repeat split...
@@ -82,7 +82,7 @@ Proof with auto.
   exists x1.
   split.
    transitivity x; intuition.
-  transitivity x0; intuition.
+  transitivity x0; intuition; auto with *.
  intros [?[E?]]. rewrite E.
  symmetry. apply SetoidPermutation_from_Permutation...
  apply _.
@@ -99,11 +99,11 @@ Proof with simpl; auto; try reflexivity.
   apply s_perm_trans with (x y0 :: x x0 :: map y l).
    apply s_perm_skip...
    apply s_perm_skip...
-   induction l... intuition.
+   induction l... intuition; auto with *.
   apply s_perm_trans with (y y0 :: y x0 :: map y l)...
   unfold respectful in *.
-  apply s_perm_skip. intuition.
-  apply s_perm_skip... intuition.
+  apply s_perm_skip. intuition; auto with *.
+  apply s_perm_skip... intuition; auto with *.
  apply s_perm_trans with (map y l')...
  apply s_perm_trans with (map x l')...
  clear IHX1 IHX2 X1 X2.
