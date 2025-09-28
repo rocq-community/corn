@@ -739,7 +739,7 @@ Proof.
   astepr ((Two:R)[^]S n).
   astepl (([1]:R)[^]S n).
   apply nexp_resp_less.
-    intuition.
+    intuition; auto with *.
    apply less_leEq.
    apply pos_one.
   apply one_less_two.

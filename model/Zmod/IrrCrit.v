@@ -155,7 +155,7 @@ Hint Resolve mult_zero : algebra.
 
 Lemma fp_resp_zero : zxfpx(cpoly_zero Z_as_CRing)[=](cpoly_zero fp).
 Proof.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma fpx_resp_mult_cr : forall (c:Z_as_CRing)(f:zx),
@@ -163,13 +163,13 @@ Lemma fpx_resp_mult_cr : forall (c:Z_as_CRing)(f:zx),
   (zxfpx (cpoly_mult_cr_cs _ f c)).
 Proof.
  induction f as [|c0 f].
-  intuition.
+  intuition; auto with *.
  astepr (zxfpx ((c[*]c0)[+X*](cpoly_mult_cr_cs _ f c))).
  astepr ((zfp (c[*]c0))[+X*](zxfpx (cpoly_mult_cr_cs _ f c))).
  astepr (((zfp c)[*](zfp c0))[+X*](zxfpx (cpoly_mult_cr_cs _ f c))).
  astepr (((zfp c)[*](zfp c0))[+X*](cpoly_mult_cr_cs fp (zxfpx f) (zfp c))).
  astepr (cpoly_mult_cr_cs fp ((zfp c0)[+X*](zxfpx f)) (zfp c)).
- intuition.
+ intuition; auto with *.
 Qed.
 
 #[global]
@@ -180,9 +180,9 @@ Lemma fpx_resp_plus :  forall f g:zx,
   (zxfpx (cpoly_plus_op _ f g)).
 Proof.
  induction f as [|c f].
-  intuition.
+  intuition; auto with *.
  induction g as [|c0 g].
-  intuition.
+  intuition; auto with *.
  astepl (cpoly_plus fp (zxfpx (c[+X*]f)) (zxfpx (c0[+X*]g))).
  astepr (zxfpx (cpoly_plus_op _ (c[+X*]f) (c0[+X*]g))).
  astepr (zxfpx ((c[+]c0)[+X*](cpoly_plus_op _ f g))).
@@ -203,7 +203,7 @@ Proof.
   astepl (cpoly_mult_op fp (cpoly_zero fp)(zxfpx g)).
   astepl (cpoly_zero fp).
   astepr (zxfpx (cpoly_zero Z_as_CRing)).
-  astepr (cpoly_zero fp); intuition.
+  astepr (cpoly_zero fp); intuition; auto with *.
  induction g as [|c0 g].
   astepl (cpoly_mult_op fp (zxfpx (c[+X*]f)) (cpoly_zero fp)).
   astepl (cpoly_zero fp).
@@ -231,7 +231,7 @@ Proof.
    (([0]:fp)[+X*](zxfpx (cpoly_mult_op _ f (c0[+X*]g))))).
  astepl ((zfp (c[*]c0)[+]([0]:fp))[+X*](cpoly_plus_op fp
    (zxfpx (cpoly_mult_cr_cs _ g c)) (zxfpx (cpoly_mult_op _ f (c0[+X*]g))))).
- intuition.
+ intuition; auto with *.
 Qed.
 
 #[global]
@@ -241,9 +241,9 @@ Lemma fpx_resp_coef : forall (f:zx)(n:nat), (zfp (nth_coeff n f))
   [=] (nth_coeff n (zxfpx f)).
 Proof.
  induction f.
-  intuition.
+  intuition; auto with *.
  induction n.
-  intuition.
+  intuition; auto with *.
  astepl (zfp (nth_coeff n f)).
  astepr (nth_coeff n (zxfpx f)).
  apply (IHf n).
@@ -281,17 +281,17 @@ Proof.
  unfold monic.
  split.
   astepl (zfp (nth_coeff m f)).
-  assert ([1][=]nth_coeff m f); intuition.
+  assert ([1][=]nth_coeff m f); intuition; auto with *.
   simpl in H.
   rewrite <- H.
-  intuition.
+  intuition; auto with *.
  red.
  intros.
  astepl (zfp (nth_coeff m0 f)).
- assert ([0][=]nth_coeff m0 f); intuition.
+ assert ([0][=]nth_coeff m0 f); intuition; auto with *.
  simpl in H0.
  rewrite <- H0.
- intuition.
+ intuition; auto with *.
 Qed.
 
 #[global]
@@ -309,11 +309,11 @@ Proof.
  intros Hfok Hfred2; elim Hfred2.
  intros g Hgok Hfred3; elim Hfred3.
  intros h Hhok Hfgh; unfold reducible.
- intuition.
+ intuition; auto with *.
  exists (zxfpx g).
-  intuition.
+  intuition; auto with *.
  exists (zxfpx h).
-  intuition.
+  intuition; auto with *.
  astepr (zxfpx (cpoly_mult_op _ g h)).
  apply fpxeq_wd.
  exact Hfgh.

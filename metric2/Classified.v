@@ -210,7 +210,7 @@ Section genball.
   Qed.
 
   Instance genball_Proper: Proper ((=) ==> (=) ==> (=) ==> iff) genball.
-  Proof with auto; intuition.
+  Proof with auto; intuition; auto with *.
    unfold genball.
    intros u e' E.
    destruct u, e'.
@@ -226,7 +226,7 @@ Section genball.
        exfalso. revert q2. rewrite <- E, q1. apply Qlt_irrefl.
       intros ?? A ?? B. rewrite A, B...
      repeat intro...
-    intuition.
+    intuition; auto with *.
    repeat intro.
    reflexivity.
   Qed.
@@ -250,7 +250,7 @@ Proof. intros; now apply genball_Proper. Qed.
    repeat intro.
    unfold genball.
    destruct q...
-   destruct Qdec_sign as [[|]|]; intuition...
+   destruct Qdec_sign as [[|]|]; intuition; auto with *.
    apply (Qlt_not_le q 0)...
   Qed.
 

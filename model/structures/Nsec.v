@@ -237,7 +237,7 @@ Proof.
    clear H1.
    intuition.
   intuition.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma lexi_dec:(forall (k i l:nat),
@@ -262,12 +262,12 @@ Proof.
    right.
    unfold Not.
    intro H2.
-   intuition.
+   intuition; auto with *.
   intro H1.
   left.
   right.
   intuition.
- intuition.
+ intuition; auto with *.
 Qed.
 
 

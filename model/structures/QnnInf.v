@@ -17,8 +17,8 @@ Global Instance: Equivalence eq.
 Proof with intuition.
  unfold eq.
  split; repeat intro.
-   destruct x...
-  destruct x, y...
+   destruct x; intuition; auto with *.
+  destruct x, y; intuition; auto with *.
  destruct x, y, z...
  transitivity q0...
 Qed.
@@ -40,7 +40,7 @@ Section liftM2.
   Definition liftM2 (x y: T): T := bind x (fun x' => bind y (fun y' => Finite (f x' y'))).
 
   Global Instance liftM2_Proper: Proper (eq ==> eq ==> eq) liftM2.
-  Proof with intuition. intros [] [] ? [] [] ?... simpl. apply p... Qed.
+  Proof with intuition. intros [] [] ? [] [] ?; intuition; auto with *. simpl. apply p... Qed.
 
   Lemma assoc:
     (forall x y z, f x (f y z) == f (f x y) z)%Qnn ->

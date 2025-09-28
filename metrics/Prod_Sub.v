@@ -398,14 +398,14 @@ Proof.
    apply rev_tri_ineq.
   apply csf_wd.
   apply cg_minus_wd.
-   intuition.
+   intuition; auto with *.
   apply ax_d_com.
   apply CPsMetricSpace_is_CPsMetricSpace.
  apply csf_wd.
  apply cg_minus_wd.
   apply ax_d_com.
   apply CPsMetricSpace_is_CPsMetricSpace.
- intuition.
+ intuition; auto with *.
 Qed.
 
 

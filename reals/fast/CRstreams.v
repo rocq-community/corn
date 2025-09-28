@@ -421,7 +421,7 @@ Proof.
  rewrite nat_of_P_succ_morphism in X.
  rewrite <- plus_n_Sm.
  assert (forall (n m:nat), eq (Z_of_nat n) (Z_of_nat m) -> eq n m).
- { intros i j H. intuition. }
+ { intros i j H. intuition; auto with *. }
  apply H. clear H.
  apply Zmult_reg_l with (Z.of_nat (nat_of_P b));
    [rewrite positive_nat_Z; auto with *|].

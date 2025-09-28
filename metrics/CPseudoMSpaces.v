@@ -290,7 +290,7 @@ Proof.
  unfold Zero_fun in |- *.
  simpl in |- *.
  unfold zero_fun in |- *.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma zero_fun_nneg : forall X : CSetoid, nneg (Zero_fun X).
@@ -302,7 +302,7 @@ Proof.
  simpl in |- *.
  unfold zero_fun in |- *.
  apply eq_imp_leEq.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma zero_fun_pos_imp_ap : forall X : CSetoid, pos_imp_ap (Zero_fun X).

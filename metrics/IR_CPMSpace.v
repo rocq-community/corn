@@ -277,14 +277,14 @@ Proof.
       apply great_nexp_resp_le.
        apply less_leEq.
        apply one_less_two.
-      intuition.
+      intuition; auto with *.
      apply ax_d_nneg.
      apply CPsMetricSpace_is_CPsMetricSpace.
     apply mult_resp_leEq_rht.
      apply great_nexp_resp_le.
       apply less_leEq.
       apply one_less_two.
-     intuition.
+     intuition; auto with *.
     apply ax_d_nneg.
     apply CPsMetricSpace_is_CPsMetricSpace.
    apply eq_imp_leEq.
@@ -350,7 +350,7 @@ Proof.
     astepr (Two:IR).
     apply less_leEq.
     apply one_less_two.
-   intuition.
+   intuition; auto with *.
   apply leEq_transitive with ((OneR[/] Two:IR[//]H1)[^]S n[+]([1][/] Two:IR[//]H1)[^]S n).
    apply plus_resp_leEq_lft.
    apply less_leEq.
@@ -374,7 +374,7 @@ Proof.
     astepr (Two:IR).
     apply less_leEq.
     apply one_less_two.
-   intuition.
+   intuition; auto with *.
   apply eq_imp_leEq.
   astepl ((Two:IR)[*]([1][/] Two:IR[//]H1)[^]S n).
   astepl ((Two:IR)[*]([1][^]S n[/] (Two:IR)[^]S n[//]nexp_resp_ap_zero (S n) H1)).
@@ -442,7 +442,7 @@ Proof.
      apply less_leEq.
      apply one_less_two.
     rational.
-   intuition.
+   intuition; auto with *.
   apply leEq_transitive with ((OneR[/] [0][+][1][+][1][//]H1)[^]S n[+]
     ([1][/] [0][+][1][+][1][//]H1)[^]S n).
    apply plus_resp_leEq_lft.
@@ -467,7 +467,7 @@ Proof.
      apply less_leEq.
      apply one_less_two.
     rational.
-   intuition.
+   intuition; auto with *.
   apply eq_imp_leEq.
   astepl ((Two:IR)[*]([1][/] [0][+][1][+][1][//]H1)[^]S n).
   astepr ((OneR[/] [0][+][1][+][1][//]H1)[^]n).
@@ -493,5 +493,6 @@ Proof.
  apply AbsIR_wd.
  rational.
 Qed.
+
 
 End Addition.

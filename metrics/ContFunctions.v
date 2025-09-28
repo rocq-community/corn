@@ -183,7 +183,7 @@ Proof.
   apply recip_resp_less.
    unfold Snring in |- *.
    apply nring_pos.
-   intuition.
+   intuition; auto with *.
   apply nat_less_bin_nexp.
  unfold one_div_succ in |- *.
  unfold Snring in |- *.

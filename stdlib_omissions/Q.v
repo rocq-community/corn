@@ -118,8 +118,8 @@ Proof with intuition.
  split; intro E.
   setoid_replace x with (x + z - z)%Q by (simpl; ring).
   setoid_replace y with (y + z - z)%Q by (simpl; ring).
-  rewrite E...
- rewrite E...
+  rewrite E; intuition; auto with *.
+ rewrite E; auto with *.
 Qed.
 
 Lemma Qminus_eq (x y: Q): (x - y == 0 <-> x == y)%Q.
@@ -460,7 +460,7 @@ Proof with intuition.
  intros.
  apply Qlt_le_trans with (inject_Z (Z_of_nat n) + 1).
   do 2 rewrite (Qplus_comm (inject_Z (Z_of_nat n))).
-  apply Qplus_lt_l...
+  apply Qplus_lt_l; auto with *.
  pose proof (inj_le _ _ H).
  rewrite Zle_Qle in H0.
  rewrite <- S_Qplus...

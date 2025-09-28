@@ -161,7 +161,7 @@ Lemma minus3:forall (a b c:nat),(c<=b<=a)-> a+(b-c)=b+(a-c).
 Proof.
  intros a b d H.
  cut  ((Z_of_nat a) + ((Z_of_nat b) - (Z_of_nat d)) = (Z_of_nat b) + ((Z_of_nat a) - (Z_of_nat d)))%Z.
-  2:intuition.
+  2:intuition; auto with *.
  intro H1.
  elim H.
  intros H2 H3.
@@ -169,10 +169,10 @@ Proof.
  rewrite<- H4 in H1.
  cut (d <=a).
   intro H5.
-  2:intuition.
+  2:intuition; auto with *.
  set (H6:=(inj_minus1 a d H5)).
  rewrite<- H6 in H1.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma minus4:forall (a b c d:nat), (d<=c<=b)->
@@ -182,17 +182,17 @@ Proof.
  cut (((Z_of_nat a)+(Z_of_nat b))+((Z_of_nat c0)-(Z_of_nat d))=
    ((Z_of_nat a)+(Z_of_nat c0))+((Z_of_nat b)-(Z_of_nat d)))%Z.
   intro H0.
-  2:intuition.
+  2:intuition; auto with *.
  elim H.
  intros H1 H2.
  set (H3:=(inj_minus1 c0 d H1)).
  rewrite<- H3 in H0.
  cut (d<=b).
-  2:intuition.
+  2:intuition; auto with *.
  intro H4.
  set (H5:=(inj_minus1 b d H4)).
  rewrite<- H5 in H0.
- intuition.
+ intuition; auto with *.
 Qed.
 
 (** The power function does not exist in the standard library *)
@@ -367,21 +367,21 @@ Lemma surj_eq:forall (n m:nat),
 ((Z_of_nat n)=(Z_of_nat m))%Z -> n=m.
 Proof.
  intros n m.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma surj_le:forall (n m:nat),
 ((Z_of_nat n)<=(Z_of_nat m))%Z -> n<=m.
 Proof.
  intros n m.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma surj_lt:forall (n m:nat),
 ((Z_of_nat n)<(Z_of_nat m))%Z -> n<m.
 Proof.
  intros n m.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma surj_not:forall (n m:nat),
@@ -395,7 +395,7 @@ Lemma lt_lt_minus:forall(q p l:nat),
 q<l -> p<q -> p+(l-q)<l.
 Proof.
  intros q p l H H0.
- intuition.
+ intuition; auto with *.
 Qed.
 
 Lemma inject_nat_convert :
