@@ -413,8 +413,8 @@ Lemma nexp_well_def : forall n, fun_wd (nexp n).
 Qed.
 
 Lemma nexp_strong_ext : forall n, fun_strext (nexp n).
- intro n; red in |- *; induction  n as [| n Hrecn]; simpl in |- *; intros x y H.
 Proof.
+ intro n; red in |- *; induction  n as [| n Hrecn]; simpl in |- *; intros x y H.
   elim (ap_irreflexive _ _ H).
  elim (cs_bin_op_strext _ cr_mult _ _ _ _ H); auto.
 Qed.

@@ -62,8 +62,8 @@ Definition Qmax_case :
  Default.max_case Q Qle Qle_total.
 
 Definition QTotalOrder : TotalOrder.
- apply makeTotalOrder with Q Qeq Qle Qmonotone Qantitone Qmin Qmax.
 Proof.
+ apply makeTotalOrder with Q Qeq Qle Qmonotone Qantitone Qmin Qmax.
           apply Qeq_le_def.
          apply Qle_refl.
         apply Qle_trans.

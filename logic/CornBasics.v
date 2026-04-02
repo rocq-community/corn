@@ -833,7 +833,6 @@ Theorem well_founded_induction_type :
  forall P : A -> Type,
  (forall x : A, (forall y : A, R y x -> P y) -> P x) -> forall a : A, P a.
 Proof.
- Proof.
  intros; apply (Acc_iter P); auto.
  Defined.
 End IndT.

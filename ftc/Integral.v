@@ -236,8 +236,8 @@ Hypothesis HfP' : nat_less_n_fun fP.
 Hypothesis incF : included (Compact Hab) (Dom F).
 
 Lemma partition_Sum_conv_integral : AbsIR (Partition_Sum HfP incF[-]integral) [<=] e[*] (b[-]a).
- apply leEq_wdl with (AbsIR (Partition_Sum HfP (contin_imp_inc _ _ _ _ contF) [-]integral)).
 Proof.
+ apply leEq_wdl with (AbsIR (Partition_Sum HfP (contin_imp_inc _ _ _ _ contF) [-]integral)).
   apply leEq_wdl with (AbsIR (Lim (Cauchy_const (Partition_Sum HfP (contin_imp_inc _ _ _ _ contF))) [-]
     integral)).
    2: apply AbsIR_wd; apply cg_minus_wd; [ apply eq_symmetric_unfolded; apply Lim_const | algebra ].

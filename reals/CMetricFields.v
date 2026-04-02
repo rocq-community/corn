@@ -71,6 +71,25 @@ Proof.
  apply cmf_proof.
 Qed.
 
+(* begin hide *)
+Lemma Hulp : forall F : CMetricField,
+    cmf_abs F [1] [=] [1] -> cmf_abs F [--][1] [=] [--] (cmf_abs F [1]) -> False.
+  intros F G H.
+  set (H0 := ax_abs_gt_zero) in *.
+  generalize H0.
+  intro H1.
+  set (H2 := H1 F (cmf_abs F) (cmf_proof F) [--] ([1]:F)) in *.
+  rewrite -> leEq_def in H2.
+  apply H2.
+  astepl ( [--] (cmf_abs F [1])).
+  astepl ( [--]OneR).
+  apply plus_cancel_less with OneR.
+  astepl ZeroR.
+  astepr OneR.
+  apply pos_one.
+Qed.
+(* begin hide *)
+
 Lemma MAbs_one_recip_one : forall F : CMetricField,
  MAbs ([1]:F) [=] MAbs ( [--][1]:F).
 Proof.
@@ -96,26 +115,7 @@ Proof.
     apply eq_symmetric_unfolded.
     exact H3.
    intro H3.
-   (* begin hide *)
-   Lemma Hulp : forall F : CMetricField,
-     cmf_abs F [1] [=] [1] -> cmf_abs F [--][1] [=] [--] (cmf_abs F [1]) -> False.
- intros F G H.
- set (H0 := ax_abs_gt_zero) in *.
- generalize H0.
- intro H1.
- set (H2 := H1 F (cmf_abs F) (cmf_proof F) [--] ([1]:F)) in *.
- rewrite -> leEq_def in H2.
- apply H2.
- astepl ( [--] (cmf_abs F [1])).
- astepl ( [--]OneR).
- apply plus_cancel_less with OneR.
- astepl ZeroR.
- astepr OneR.
- apply pos_one.
-Qed.
-(* begin hide *)
 simpl in |- *.
-Proof.
    set (H4 := Hulp F H1 H3) in *.
    intuition.
   apply cond_square_eq.

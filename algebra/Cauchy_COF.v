@@ -569,8 +569,8 @@ Proof.
 Qed.
 
 Definition R_recip : forall x : R_CRing, x [#] [0] -> R_CRing.
- intros x Hx; elim Hx; intro Hlt; elim Hlt; intros N HN; elim HN; clear Hx Hlt HN; intros e He HN.
 Proof.
+ intros x Hx; elim Hx; intro Hlt; elim Hlt; intros N HN; elim HN; clear Hx Hlt HN; intros e He HN.
   cut (forall n : nat, N <= n -> e [<=] [--] (CS_seq _ x n)); intros.
    apply (Build_CauchySeq _ _ (CS_seq_inv _ _
      (CS_seq_recip _ _ (CS_seq_inv _ _ (CS_proof _ x)) e He N H))).

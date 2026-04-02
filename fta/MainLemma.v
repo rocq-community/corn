@@ -431,7 +431,6 @@ Lemma Main : {r : IR | [0] [<=] r | {k : nat | 1 <= k /\ k <= n /\
   r[^]n [<=] a_0 /\ Smaller[*]a_0[-]Two[*]eps [<=] p_k /\ p_k [<=] a_0)}}.
 Proof.
  (* begin hide *)
-Proof.
  elim (Key a n gt_n_0 eps eps_pos a_nonneg a_n_1 a_0 eps_le_a_0).
  intro t. intros H0 H1.
  elim (H1 two_n). intro k. intros H2.
