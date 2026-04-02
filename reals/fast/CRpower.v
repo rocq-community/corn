@@ -489,7 +489,7 @@ Qed.
 on the absolute value of x is available. *)
 #[global]
 Instance CRpower_N: Pow CR N := λ x n, ucFun (CRpower_N_bounded n (CR_b (1#1) x)) x.
-Arguments CRpower_N x%type n%N.
+Arguments CRpower_N x%_type n%_N.
 
 Lemma CRpower_N_bounded_N_power : forall (n : N) (c:Qpos) (x:CR),
 ((- (' (proj1_sig c)) <= x /\ x <= 'proj1_sig c) ->

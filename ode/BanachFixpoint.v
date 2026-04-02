@@ -26,7 +26,7 @@ Context (f : X -> X) `{!IsContraction f q} (x0 : X).
 
 Let x n := Nat.iter n f x0.
 
-Arguments x n%mc.
+Arguments x n%_mc.
 
 Lemma x_Sn : forall n, x (1 + n) = f (x n).
 Proof. reflexivity. Qed.
