@@ -21,7 +21,6 @@ jobs:
           - 'rocq/rocq-prover:9.0'
           - 'coqorg/coq:8.20'
           - 'coqorg/coq:8.19'
-          - 'coqorg/coq:8.18'
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
