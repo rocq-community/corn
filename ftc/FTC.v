@@ -87,8 +87,8 @@ Proof.
 Qed.
 
 Definition Fprim : PartIR.
- apply Build_PartFunct with (pfpfun := fun (x : IR) (Hx : I x) => Integral (prim_lemma x Hx)).
 Proof.
+ apply Build_PartFunct with (pfpfun := fun (x : IR) (Hx : I x) => Integral (prim_lemma x Hx)).
   apply iprop_wd.
  exact Fprim_strext.
 Defined.

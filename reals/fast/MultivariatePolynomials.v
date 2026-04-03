@@ -974,8 +974,8 @@ end.
 
 Add Parametric Morphism n :
  (@n_Function_ball01 n) with signature Qeq ==> (@st_eq _) ==> (@st_eq _) ==> iff as n_Function_ball01_wd.
- induction n; intros e1 e2 He x y Hxy a b Hab.
 Proof.
+ induction n; intros e1 e2 He x y Hxy a b Hab.
   change (ball e1 x a <-> ball e2 y b).
   rewrite -> He, Hxy, Hab.
   reflexivity.

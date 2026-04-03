@@ -462,7 +462,6 @@ Lemma Key : {t : IR | [0] [<=] t | forall J, {k : nat -> nat |
   forall i, 1 <= i -> i <= n -> a i[*]r[^]i[-]eps [<=] a k_j[*]r[^]k_j)}}.
 Proof.
  (* begin hide *)
-Proof.
  elim lem_1. intro t. intros H0 H1.
  elim H1. intros k_0 H2.
  elim H2. intros H3 H4.

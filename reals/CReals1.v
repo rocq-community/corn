@@ -50,8 +50,8 @@ The sequence defined by $x_n=\frac2{n+1}$#x(n)=2/(n+1)#.
 *)
 
 Lemma twice_inv_seq_Lim : SeqLimit (R:=IR) (fun n => Two[*]one_div_succ n) [0].
- red in |- *; fold (Cauchy_Lim_prop2 (fun n : nat => Two[*]one_div_succ n) [0]) in |- *.
 Proof.
+ red in |- *; fold (Cauchy_Lim_prop2 (fun n : nat => Two[*]one_div_succ n) [0]) in |- *.
  apply Cauchy_Lim_prop3_prop2.
  red in |- *; intro.
  exists (2 * S k); intros.

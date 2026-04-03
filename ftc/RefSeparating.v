@@ -501,8 +501,8 @@ Proof.
 Qed.
 
 Definition sep__part : Partition Hab sep__part_length.
- apply Build_Partition with (fun (i : nat) (Hi : i <= m) => P _ (sep__part_fun_bnd i Hi)).
 Proof.
+ apply Build_Partition with (fun (i : nat) (Hi : i <= m) => P _ (sep__part_fun_bnd i Hi)).
     intros; apply prf1.
     apply sep__part_fun_wd; auto.
    intros.

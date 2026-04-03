@@ -109,8 +109,8 @@ Proof.
 Qed.
 
 Definition PartInt : PartIR.
- apply Build_PartFunct with (pfpfun := fun (x : IR) Hx => f (Build_subcsetoid_crr IR _ x Hx)).
 Proof.
+ apply Build_PartFunct with (pfpfun := fun (x : IR) Hx => f (Build_subcsetoid_crr IR _ x Hx)).
   exact (compact_wd _ _ _).
  exact PartInt_strext.
 Defined.

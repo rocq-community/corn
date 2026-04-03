@@ -165,8 +165,8 @@ Variable X : TotalOrder.
 The dual of a total order is a total order.
 *)
 Definition Dual : TotalOrder.
- eapply Build_TotalOrder with (L:= Dual X).
 Proof.
+ eapply Build_TotalOrder with (L:= Dual X).
  intros.
  destruct (le_total _ x y); auto.
 Defined.
