@@ -88,7 +88,7 @@ CoRN includes the following parts:
   - Vincent Semeria ([**@vincentse**](https://github.com/vincentse))
   - Xia Li-yao ([**@Lysxia**](https://github.com/Lysxia))
 - License: [GNU General Public License v2](LICENSE)
-- Compatible Coq versions: Coq 8.18 or greater
+- Compatible Coq versions: Coq 8.19 or greater
 - Additional dependencies:
   - [Math-Classes](https://github.com/coq-community/math-classes) 8.8.1 or
 greater, which is a library of abstract interfaces for mathematical
