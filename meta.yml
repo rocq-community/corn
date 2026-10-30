@@ -81,11 +81,20 @@ license:
   identifier: GPL-2.0
 
 supported_coq_versions:
-  text: Coq 8.19 or greater
-  opam: '{(>= "8.19" & < "8.20~") | (= "dev")}'
+  text: Coq 8.19 to 8.20 or Rocq 9.0 to 9.2
+  # Rocq 9.2 drops the `coq` compatibility opam package, so the compiler and
+  # elpi dependencies are hand-written as disjunctions (coq/rocq-core,
+  # coq-elpi/rocq-elpi) in coq-corn.opam; this field is kept for reference.
+  opam: '{>= "8.19" & < "8.21~"} | "coq-core" {(>= "9.0" & < "9.3~") | (= "dev")}'
+
+tested_rocq_opam_versions:
+- version: dev
+- version: "9.2"
+- version: "9.1"
+- version: "9.0"
 
 tested_coq_opam_versions:
-- version: dev
+- version: "8.20"
 - version: "8.19"
 
 dependencies:
