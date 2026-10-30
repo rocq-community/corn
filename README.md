@@ -83,19 +83,19 @@ CoRN includes the following parts:
   - Lionel Mamane
   - Nickolay Shmyrev
   - Vincent Semeria
-- Coq-community maintainer(s):
+- Rocq-community maintainer(s):
   - Bas Spitters ([**@spitters**](https://github.com/spitters))
   - Vincent Semeria ([**@vincentse**](https://github.com/vincentse))
   - Xia Li-yao ([**@Lysxia**](https://github.com/Lysxia))
 - License: [GNU General Public License v2](LICENSE)
-- Compatible Coq versions: Coq 8.19 or greater
+- Compatible Rocq/Coq versions: Coq 8.19 to 8.20 or Rocq 9.0 to 9.2
 - Additional dependencies:
   - [Math-Classes](https://github.com/coq-community/math-classes) 8.8.1 or
 greater, which is a library of abstract interfaces for mathematical
 structures that is heavily based on Coq's type classes.
 
   - [Bignums](https://github/com/coq/bignums)
-- Coq namespace: `CoRN`
+- Rocq/Coq namespace: `CoRN`
 - Related publication(s):
   - [See this page for the list of publications](http://corn.cs.ru.nl/pub.html) 
 

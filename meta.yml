@@ -85,7 +85,7 @@ supported_coq_versions:
   # Rocq 9.2 drops the `coq` compatibility opam package, so the compiler and
   # elpi dependencies are hand-written as disjunctions (coq/rocq-core,
   # coq-elpi/rocq-elpi) in coq-corn.opam; this field is kept for reference.
-  opam: '{>= "8.19" & < "8.21~"} | "rocq-core" {(>= "9.0" & < "9.3~") | (= "dev")}'
+  opam: '{>= "8.19" & < "8.21~"} | "coq-core" {(>= "9.0" & < "9.3~") | (= "dev")}'
 
 tested_rocq_opam_versions:
 - version: dev
