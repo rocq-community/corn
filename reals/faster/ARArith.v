@@ -1171,3 +1171,4 @@ Qed.
 
 
 End ARarith.
+#[global] Instance: Params (@ARle) 21 := {}.

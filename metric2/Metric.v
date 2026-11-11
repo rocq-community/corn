@@ -83,6 +83,9 @@ Arguments ball [m].
 Definition msp_eq {m:MetricSpace} (x y : msp_car m) : Prop
   := ball 0 x y.
 
+#[global] Instance: Params (@ball) 1 := {}.
+#[global] Instance: Params (@msp_eq) 1 := {}.
+
 #[global]
 Instance msp_Equiv (m : MetricSpace) : Equiv m := @msp_eq m.
 

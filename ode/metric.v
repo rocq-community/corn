@@ -129,6 +129,7 @@ Bind Scope mc_scope with Q.
 Add Field Q : (stdlib_field_theory Q).
 
 Class MetricSpaceBall (X : Type) : Type := mspc_ball: Qinf → relation X.
+#[global] Instance: Params (@mspc_ball) 2 := {}.
 
 Local Notation ball := mspc_ball.
 
@@ -151,6 +152,7 @@ Class ExtMetricSpaceClass (X : Type) `{MetricSpaceBall X} : Prop := {
 }.
 
 Class MetricSpaceDistance (X : Type) := msd : X -> X -> Q.
+#[global] Instance: Params (@msd) 2 := {}.
 
 Class MetricSpaceClass (X : Type) `{ExtMetricSpaceClass X} `{MetricSpaceDistance X} : Prop :=
   mspc_distance : forall x1 x2 : X, ball (msd x1 x2) x1 x2.
@@ -959,6 +961,7 @@ destruct n as [| n].
 Qed.
 
 End SequenceLimits.
+#[global] Instance: Params (@seq_lim) 2 := {}.
 
 Theorem seq_lim_cont
         `{ExtMetricSpaceClass X, ExtMetricSpaceClass Y} (f : X -> Y)

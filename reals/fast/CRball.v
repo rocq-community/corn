@@ -56,6 +56,7 @@ Section contents.
   Qed.
 
 End contents.
+#[global] Instance: Params (@CRball) 1 := {}.
 
 (* In the CR metric space, CRball is what you'd expect. *)
 
