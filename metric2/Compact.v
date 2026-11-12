@@ -85,6 +85,7 @@ Definition Compact X := Complete (FinEnum X).
 Definition inCompact {X : MetricSpace} (x:Complete X) (s:Compact X) : Prop :=
   forall (e1 e2:Qpos), FinSubset_ball (proj1_sig e1 + proj1_sig e2)
                                  (approximate x e1) (approximate s e2).
+#[global] Instance: Params (@inCompact) 1 := {}.
 (* begin hide *)
 Add Parametric Morphism {X : MetricSpace} : (@inCompact X)
     with signature (@msp_eq _) ==> (@msp_eq _) ==> iff as inCompact_wd.

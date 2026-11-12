@@ -107,6 +107,7 @@ Arguments cof_greater {c}.
 Infix "[>]" := cof_greater (at level 70, no associativity).
 
 Arguments cof_leEq {c}.
+#[global] Instance: Morphisms.Params (@cof_leEq) 1 := {}.
 Infix "[<=]" := cof_leEq (at level 70, no associativity).
 
 Arguments cof_grEq {c}.

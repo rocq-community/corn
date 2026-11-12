@@ -36,6 +36,7 @@ Section def.
   Qed.
 
 End def.
+#[global] Instance: Params (@SetoidPermutation) 2 := {}.
 
 #[global]
 Hint Constructors SetoidPermutation Permutation.
